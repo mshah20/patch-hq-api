@@ -10,7 +10,7 @@ const dbURI = process.env.DB_URI;
 const db = process.env.DB_DB;
 
 var corsOptions = {
-    origin: ['http://localhost:3000'],
+    origin: ['https://mshah20.github.io/patch-hq/'],
     optionsSuccessStatus: 200
   }
 
