@@ -42,7 +42,6 @@ app.get('/color', async (req, res) => {
     const { game } = req.query;
 
     try {
-        result = document
         const result = await client.db(db).collection("games").find({game}, { projection: { _id: 0, color: 1 } }).toArray();
         res.send(result[0]);
     } catch (e) {
@@ -52,7 +51,6 @@ app.get('/color', async (req, res) => {
 
 app.get('/all-games', async (req, res) => {
     try {
-        result = document
         const result = await client.db(db).collection("games").find({}, { projection: { _id: 0, game: 1 } }).toArray();
         res.send(result);
     } catch (e) {
@@ -64,7 +62,6 @@ app.get('/patches', async (req, res) => {
     const { game } = req.query;
 
     try {
-        result = document
         const result = await client.db(db).collection(game).find({}, { projection: { _id: 0 } }).toArray();
         res.send(result);
     }
