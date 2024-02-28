@@ -9,12 +9,14 @@ const pass = process.env.DB_PASS;
 const dbURI = process.env.DB_URI;
 const db = process.env.DB_DB;
 
-var corsOptions = {
-    origin: ['https://mshah20.github.io/patch-hq/'],
-    optionsSuccessStatus: 200
-  }
+// const corsOptions = {
+//     origin: ['https://mshah20.github.io/patch-hq/'],
+//     optionsSuccessStatus: 200
+// }
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+
+app.use(cors());
 
 const uri = `mongodb+srv://${user}:${pass}@${dbURI}.dnkgkze.mongodb.net/?retryWrites=true&w=majority`;
 const client = new MongoClient(uri);
