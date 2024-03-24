@@ -61,10 +61,15 @@ app.get('/all-games', async (req, res) => {
 })
 
 app.get('/patches', async (req, res) => {
-    const { game } = req.query;
+    const { game, pageSize } = req.query;
+    const limit = Number(pageSize);
 
     try {
-        const result = await client.db(db).collection(game).find({}, { projection: { _id: 0 } }).toArray();
+        const result = await client.db(db).collection(game)
+            .find({}, { projection: { _id: 0 } })
+            .sort( { dateObj: - 1 } )
+            .limit(limit)
+            .toArray();
         res.send(result);
     }
     catch (e) {
